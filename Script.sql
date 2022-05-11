@@ -8,7 +8,10 @@ select count(payment_id) from payment p
 where amount between  3.99 and  5.99  --3,412
 
 -- What film does the store have the most of? (search in inventory)
-select max(film_id) from inventory i -- 1,000
+select film_id, count(film_id) from inventory i -- 200 (9)
+group by film_id 
+order by count(film_id) desc
+limit 1
 
 -- How many customers have the last name ‘William’?
 select count(customer_id) from customer c
